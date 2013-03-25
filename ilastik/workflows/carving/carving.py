@@ -24,7 +24,7 @@ if __name__ == "__main__":
     parser.add_option("--hintoverlay",
                   dest="hintoverlayFile", default=None,
                   help="specify a file which adds a hint overlay")
-    
+    5
     parser.add_option("--pmapoverlay",
                   dest="pmapoverlayFile", default=None,
                   help="specify a file which adds a pmap overlay")
@@ -36,7 +36,7 @@ if __name__ == "__main__":
                         'pmapoverlayFile' : options.pmapoverlayFile }
         
         def loadProject(shell):
-            shell.openProjectFile("C:/Users/Ben/Desktop/carvingData/stacktest.ilp")
+            #shell.openProjectFile("C:/Users/Ben/Desktop/carvingData/stacktest.ilp")
             pass
         
         startShellGui(functools.partial(CarvingWorkflow, **workflowKwargs),loadProject)
