@@ -305,6 +305,10 @@ class IlastikShell( QMainWindow ):
         
         self.startscreen = uic.loadUi( localDir + "/ui/ilastikShell.ui", self )
         
+        defaultSize = PreferencesManager().get("shell","window size")
+        if defaultSize is not None:
+            self.startscreen.resize(QSize(*defaultSize))
+        
         self.startscreen.CreateList.setWidget(self.startscreen.VL1.widget())
         self.startscreen.CreateList.setWidgetResizable(True)
         self.startscreen.OpenList.setWidget(self.startscreen.VL2.widget())
@@ -1156,7 +1160,8 @@ class IlastikShell( QMainWindow ):
 
         # Stop the thread that checks for log config changes.
         ilastik.ilastik_logging.stopUpdates()
-
+        
+        PreferencesManager().set("shell","window size",(self.startscreen.width(),self.startscreen.height()))
         # Close the window first, so applets can reimplement hideEvent() and such.
         self.close()
         
